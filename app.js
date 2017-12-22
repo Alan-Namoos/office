@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = process.env.port || 8080;
+const PORT = process.env.PORT || 8080;
 
 // Mongoose Connection to mLab
 mongoose.connect('mongodb://alan-namoos:zxc123asd@ds023098.mlab.com:23098/office', { useMongoClient: true });
