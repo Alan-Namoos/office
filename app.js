@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const PORT = 3000;
 
 // Mongoose Connection to mLab
 mongoose.connect('mongodb://alan-namoos:zxc123asd@ds023098.mlab.com:23098/office', { useMongoClient: true });
@@ -11,12 +12,12 @@ let db = mongoose.connection;
 
 // Check if DB is connected
 db.once('open', function(){
-    console.log('MongoDB Connected ...');
+    // console.log('MongoDB Connected ...');
 });
 
 // Check for DB Errors
 db.on('error', function(err){
-    console.log(err.message);
+    // console.log(err.message);
 });
 
 // Middleware
@@ -42,9 +43,9 @@ app.get('/', function(req,res){
 });
 
 // Server
-app.listen(3000, function(err){
+app.listen(process.env.port || PORT, function(err){
     if(err){
         throw err;
     }
-    console.log('Running on Port: 3000');
-})
+    // console.log(`Listening on Port: ${PORT}`);
+});
