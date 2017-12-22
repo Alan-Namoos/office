@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.port || 8080;
 
 // Mongoose Connection to mLab
 mongoose.connect('mongodb://alan-namoos:zxc123asd@ds023098.mlab.com:23098/office', { useMongoClient: true });
@@ -43,7 +43,7 @@ app.get('/', function(req,res){
 });
 
 // Server
-app.listen(process.env.port || PORT, function(err){
+app.listen(PORT, function(err){
     if(err){
         throw err;
     }
