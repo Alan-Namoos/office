@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<title>All Users</title>
+</head>
+<body>
+	<header>
+		<ul class="nav justify-content-center mb-4 mt-2">
+			<li class="nav-item">
+				<a class="nav-link" href='/'>Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/users">Users</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/">Link</a>
+			</li>
+		</ul>
+	</header> <!-- Header - Nav -->
+
+    
+
+	<div class="container">
+		<div class="row">
+			<div class="col-4">
+				<form action="/users" method="post" class="bg-dark p-3">
+					<div class="form-group">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+					</div>
+					<div class="form-group">
+						<input type="email" class="form-control" id="email" name="email"  placeholder="Enter Email">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="age" name="age" placeholder="Enter Age">
+					</div>
+					<button type="submit" class="btn btn-primary btn-block">Add User</button>
+				</form>
+			</div> <!-- Form  -->
+
+			<div class="col-8 ">
+				<table class="table table-xbordered table-xstriped bg-light">
+					<thead class="thead-dark">
+						<tr class="text-center">
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Age</th>
+							<th colspan="3">Options</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% users.forEach(function(user){ %>
+						<tr class="text-center">
+							<td><%= user.name %></td>
+							<td><%= user.email %></td>
+							<td><%= user.age %></td>
+							<td><a href='/users/<%= user._id %>' class="btn btn-outline-primary btn-sm btn-block">View</a> </td>
+							<td><form method="get" action="/edit/user/<%= user._id %>"><button class="btn btn-outline-info btn-sm btn-block" type="submit">Edit</button></form></td>
+							<td><form method="post" action="/delete/user/<%= user._id %>"><button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete</button></form></td>
+						</tr> 
+						<% }); %>
+					</tbody>
+				</table>
+			</div> <!-- Table -->
+		</div> <!-- row -->
+	</div>   <!-- Main Container -->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
