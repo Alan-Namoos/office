@@ -39,7 +39,8 @@ app.use('/', require('./routes/users'));
 
 // Home Route
 app.get('/', function(req,res){
-    res.send('Express App Home Page');
+    // res.send('Express App Home Page');
+    res.redirect('/users');
 });
 
 // Server
