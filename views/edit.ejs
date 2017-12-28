@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <title>Express App 5</title>
+    <% include partials/head %>
 </head>
 <body>
     <header>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href='/'>Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Link</a>
-                </li>
-            </ul>
-        </header>    
+        <% include partials/navbar %>
+    </header>    
 
     <div class="container">
         <div class="row">
-            <div class="col">
-                <form action="/update/user/<%= user._id %>" method="post" class="bg-dark p-3">
+            <div class="col-6 offset-3">
+                <form action="/update/client/<%= client._id %>" method="post" class="bg-dark p-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" value="<%= user.name %>" >
+                        <input type="text" class="form-control" id="name" name="name" value="<%= client.name %>" >
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" >
+                        <input type="email" class="form-control" id="email" name="email" value="<%= client.email %>" >
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="age" name="age" value="<%= user.age %>" >
+                        <input type="text" class="form-control" id="age" name="age" value="<%= client.age %>" >
                     </div>
-                    <a href="/users" class="btn btn-default">Cancel</a> 
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <div class="row">
+                        <div class="col">
+                            <a href="/clients" class="btn btn-outline-warning btn-block">Cancel</a> 
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-outline-success btn-block">Save</button>
+                        </div>
+                    </div>
+                    
+                   
                 </form>
             </div>
         </div>
     </div>   <!-- Main Container -->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <% include partials/scripts %>
 </body>
 </html>

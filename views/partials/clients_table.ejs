@@ -1,0 +1,29 @@
+<table class="table table-bordered table-sm table-hover table-xstriped bg-light">
+        <thead class="thead-dark">
+            <tr class="text-center">
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Case Type</th>
+                <th scope="col">Case Status</th>
+                <th colspan="2">Options</th>
+            </tr>
+        </thead>
+        <tbody>   
+            <% clients.forEach(function(client){ %>
+            <tr class="text-center" onclick="window.location='/client/<%= client._id %>';">
+                <td><a href='/client/<%= client._id %>'><%= client.name.first %> <%= client.name.last %></a></td>
+                <td><%= client.email.home %></td>
+                <td><%= client.cases[0].case_type %></td>
+                <td class=" 
+                <% if (client.cases[0].case_status == 'Approved') { %> table-success <% } %>
+                <% if (client.cases[0].case_status == 'Pending') { %> table-warning <% } %>
+                <% if (client.cases[0].case_status == 'Denied') { %> table-danger <% } %>                            
+            "><%= client.cases[0].case_status %></td>
+                
+                <td><a href='/client/<%= client._id %>' class="btn btn-primary btn-sm btn-block">View</a></td>
+                <td><form method="get" action="/edit/client/<%= client._id %>"><button class="btn btn-info btn-sm btn-block" type="submit">Edit</button></form></td>
+                <!-- <td><form method="post" action="/delete/client/<%= client._id %>"><button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete</button></form></td> -->
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>

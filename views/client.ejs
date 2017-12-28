@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include partials/head %>
+</head>
+<body>
+    <header>
+        <% include partials/navbar %>
+    </header>    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <h4 class="card-header"><%= client.name.first %> <%= client.name.last %></h4>
+                    <div class="card-body">
+                        <p class="card-text"><%= client.address.home %></p>
+                        <p class="card-text"><%= client.phone %></p>
+                        <p class="card-text"><%= client.email.home %></p>
+                        <a href="#" class="btn btn-info">Edit Client Info</a>
+                    </div>
+                </div>
+
+
+                    <!-- <div class="row text-center">
+                        <div class="col">
+                            <form method="get" action="/edit/client/<%= client._id %>"><button class="btn btn-info btn-block" type="submit">Edit</button></form>
+                        </div>
+                        <div class="col">
+                            <form method="post" action="/delete/client/<%= client._id %>"><button class="btn btn-danger btn-block" type="submit">Delete</button></form>
+                        </div>
+                    </div> -->
+                    
+					
+            </div>
+            <div class="col-6">
+                <ul class="list-group bg-dark p-3 mb-3">
+                    <li class="list-group-item 
+                        <% if (client.cases[0].case_status == 'Approved') { %> list-group-item-success <% } %>
+                        <% if (client.cases[0].case_status == 'Pending') { %> list-group-item-warning <% } %>
+                        <% if (client.cases[0].case_status == 'Denied') { %> list-group-item-danger <% } %>                            
+                    "><strong>Status:</strong> <span><%= client.cases[0].case_status %></span> </li>
+                    <li class="list-group-item"> <strong>Case:</strong>  <%= client.cases[0].case_type %></li>
+                    <li class="list-group-item"> <strong>A-Number:</strong>  <%= client.a_number %></li> 
+                    <li class="list-group-item"> <strong>Opened:</strong> <%= client.cases[0].case_date_created %></li> 
+                </ul>
+            </div>
+            <!-- <div class="col-6">
+                <div class="card">
+                    <h4 class="card-header"><%= client.cases[0].case_type %></h4>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= client.cases[0].case_status %></h5>
+                        <p class="card-text"><%= client.address.home %></p>
+                        <p class="card-text"><%= client.cases[0].case_date_created %></p>
+                        <a href="#" class="btn btn-info">Edit Case Info</a>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+    </div>   <!-- Main Container -->
+
+    <% include partials/scripts %>
+</body>
+</html>
