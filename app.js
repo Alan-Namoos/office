@@ -44,7 +44,7 @@ app.use('/', require('./routes/clients'));
 app.get('/', function(req,res){
     Client.find({}).then(function(clients){
         if (clients.length < 1 ){ 
-            res.redirect('/clients');
+            res.redirect('/new-client');
             console.log('Empty');
         }
         res.render('index', {

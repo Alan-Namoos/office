@@ -1,0 +1,172 @@
+<div class="col-8 offset-2">
+    <form action="/update/client/<%= client._id %>" method="post" class="bg-light p-3" id="needs-validation">
+        <div class="row">
+            <div class="col"> <!-- CLIENT INFO -->
+                <h4>Edit Client Info</h4>
+                <!-- Name -->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group"> 
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="<%= client.name.first %>" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group"> 
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" value="<%= client.name.last %>" required>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col">
+                        <!-- Phone Number -->
+                        <div class="form-group"> 
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<%= client.phone %>" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Date Of Birth -->
+                        <div class="form-group"> 
+                            <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Date Of Birth" value="<%= client.birthdate %>">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <!-- Home Address -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="home_address" name="home_address"  placeholder="Home Address" value="<%= client.address.home %>">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Work Address -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="work_address" name="work_address"  placeholder="Work Address" value="<%= client.address.work %>" > 
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col">
+                        <!-- Home Email -->
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="home_email" name="home_email"  placeholder="Home Email" value="<%= client.email.home %>">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Work Email -->
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="work_email" name="work_email"  placeholder="Work Email" value="<%= client.email.work %>">
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="row">
+                    <div class="col">
+                        <!-- A-Number -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="a_number" name="a_number" placeholder="A-Number" value="<%= client.a_number %>" >
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Immigration Status -->
+                        <div class="form-group">
+                            <select class="form-control" id="immigration_status" name="immigration_status">
+                                <option value="None">None</option>
+                                <option value="Student">Student</option>
+                                <option value="Green_Card_Holder">Green Card Holder</option>
+                                <option value="Citizen">Citizen</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <!-- Employment -->
+                        <div class="form-group">
+                            <select class="form-control" id="employment" name="employment">
+                                <option value="Employed">Employed</option>
+                                <option value="Self_Employed">Self Emplyed</option>
+                                <option value="Unemployed">Unemployed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- END CLIENT INFO -->
+        </div><!-- row -->
+
+        <hr>
+
+        <div class="row">
+            <div class="col"><!-- CASE INFO -->
+                <h4>Edit Case Info</h4>
+                <!-- Case Type -->
+                <div class="form-group">
+                    <select class="form-control" id="case_type" name="case_type">
+                        <option value="Asylum">Asylum</option>
+                        <option value="Deportation">Deportation</option>
+                        <option value="Work_Authorization">Work Authorization</option>
+                        <option value="Family_Based_Green_Card">Family Based - Green Card</option>
+                        <option value="Employment_Based_Green_Card">Employment Based - Green Card</option>
+                        <option value="Citizenship_Naturaliztion">US Citizenship / Naturalization</option>
+                    </select>
+                </div>
+
+                <!-- Case Number -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="case_number" name="case_number" placeholder="Case Number (If Any)">
+                </div>
+
+                <!-- Case Status -->
+                <div class="form-group">
+                    <select class="form-control" id="case_status" name="case_status">
+                        <option value="New">New</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Denied">Denied</option>
+                    </select>
+                </div>
+
+                <!-- Case Priority -->
+                <div class="form-group">
+                    <select class="form-control" id="case_priority" name="case_priority">
+                        <option value="Low">Low</option>
+                        <option value="Normal">Normal</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+            </div><!-- END CASE INFO -->
+
+            <div class="col"><!-- FILES -->
+                <h4>Edit Files</h4>
+                <!-- File Name -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="file_name" name="file_name" placeholder="File Name" value="<%= client.cases[0].case_files[0].file_name %>" >
+                </div>
+
+                <!-- Case Priority -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="file_type" name="file_type" placeholder="File Type" value="<%= client.cases[0].case_files[0].file_type %>" >
+                </div>
+
+                <!-- Case Priority -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="file_url" name="file_url" placeholder="File Url" value="<%= client.cases[0].case_files[0].file_url %>" >
+                </div>
+            </div><!-- END FILES -->
+        </div> <!-- row -->
+
+        <div class="row">
+            <div class="col">
+                <a href="/client/<%= client._id %>" class="btn btn-warning btn-block">Cancel</a> 
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success btn-block">Save</button>
+            </div>
+        </div>
+        
+       
+    </form>
+</div>
