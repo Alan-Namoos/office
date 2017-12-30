@@ -3,9 +3,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Client = require('./models/client');
-const app = express();
 const PORT = process.env.PORT || 8080;
-
+const app = express();
 app.locals.siteName = 'Anzarouth Immigration';
 
 // Mongoose Connection to mLab
@@ -39,12 +38,13 @@ app.set('view engine', 'ejs');
 
 // Routes
 app.use('/', require('./routes/clients'));
+app.use('/', require('./routes/cases'));
 
 // Home Route
 app.get('/', function(req,res){
     Client.find({}).then(function(clients){
         if (clients.length < 1 ){ 
-            res.redirect('/new-client');
+            res.redirect('/add/client');
             console.log('Empty');
         }
         res.render('index', {

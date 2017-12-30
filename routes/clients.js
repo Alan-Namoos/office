@@ -2,15 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Client = require('../models/client');
 
-// [GET - Render New Client Form]
-router.get('/new/client', function(req, res){
-        res.render('new-client', {
-            pageTitle: 'New Client',
-            pageID: 'newClient'
-        });
-});
 
-// [GET One]
+// render One Client details & all related cases
 router.get('/client/:id', function(req, res){
     Client.findById(req.params.id).then(function(client){
         res.render('client', {
@@ -21,14 +14,29 @@ router.get('/client/:id', function(req, res){
     });
 });
 
-// [POST] Add New Client
-router.post('/new/client', function(req, res){
+// render Add Client Form
+router.get('/add/client', function(req, res){
+    res.render('add-client', {
+        pageTitle: 'Add Client',
+        pageID: 'addClient'
+    });
+});
+
+// SAVE New Client
+router.post('/save/client', function(req, res){
+
+    let caseFiles = {
+        file_name: req.body.file_name,
+        file_type: req.body.file_type,
+        file_url: req.body.file_url
+    };
 
     let clientCase = {
         case_type: req.body.case_type,
         case_number: req.body.case_number,
         case_priority: req.body.case_priority,   
-        case_status: req.body.case_status
+        case_status: req.body.case_status,
+        case_files: [caseFiles]
     };
     let newClient = new Client({
         name: {
@@ -59,11 +67,9 @@ router.post('/new/client', function(req, res){
 });
 
 
-
-// Load Edit Client From - populated with Client Data
+// render EDIT Client From - populated with Client Data
 router.get('/edit/client/:id', function(req, res){
     Client.findById(req.params.id).then(function(client){
-        console.log(client.cases[0].case_files);
         res.render('edit-client', {
             pageTitle: 'Edit Client: ' + client.name.first,
             pageID: 'editClient',
@@ -72,23 +78,10 @@ router.get('/edit/client/:id', function(req, res){
     });
 });
 
-// Update User data inside [POST] request from Form
+// UPDATE Client data coming from EDIT Form
 router.post('/update/client/:id', function(req, res){
     let clientID = req.params.id;
 
-    let clientFiles = {
-        file_name: req.body.file_name,
-        file_type: req.body.file_type,
-        file_url: req.body.file_url
-    };
-
-    let clientCase = {
-        case_type: req.body.case_type,
-        case_number: req.body.case_number,
-        case_priority: req.body.case_priority,   
-        case_status: req.body.case_status,
-        case_files: [clientFiles]
-    };
     let updatedClient = {
         name: {
             first: req.body.first_name,
@@ -107,7 +100,7 @@ router.post('/update/client/:id', function(req, res){
         employment: req.body.employment,
         immigration_status: req.body.immigration_status,
         a_number: req.body.a_number,
-        cases: [clientCase] 
+        // cases: [clientCase] 
     };  
     
     Client.findByIdAndUpdate(clientID, updatedClient).then(function(clientBeforeUpdate){

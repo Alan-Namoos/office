@@ -1,0 +1,50 @@
+<div class="col-8 offset-2">
+    <form action="/save/case/<%= client._id %>" method="post" class="bg-light p-3" id="needs-validation">
+
+        <div class="row">
+            <div class="col"><!-- CASE INFO -->
+                <h4>Add new case for: ( <%= client.name.first %> <%= client.name.last %> )</h4>
+                <!-- Case Type -->
+                <div class="form-group">
+                    <select class="form-control" id="case_type" name="case_type">
+                        <option selected>Case Type:</option>
+                        <option value="Asylum">Asylum</option>
+                        <option value="Deportation">Deportation</option>
+                        <option value="Work Authorization">Work Authorization</option>
+                        <option value="Family Based - Green Card">Family Based - Green Card</option>
+                        <option value="Employment - Based Green Card">Employment Based - Green Card</option>
+                        <option value="Citizenship Naturaliztion">US Citizenship / Naturalization</option>
+                    </select>
+                </div>
+
+                <!-- Case Number -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="case_number" name="case_number" placeholder="Case Number (If Any)">
+                </div>
+
+                <!-- Case Status -->
+                <div class="form-group">
+                    <select class="form-control" id="case_status" name="case_status">
+                        <option selected>Case Status:</option>
+                        <option value="New">New</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Denied">Denied</option>
+                    </select>
+                </div>
+
+                <!-- Case Priority -->
+                <div class="form-group">
+                    <select class="form-control" id="case_priority" name="case_priority">
+                        <option selected>Case Priority:</option>
+                        <option value="Low">Low</option>
+                        <option value="Normal">Normal</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+            </div><!-- END CASE INFO -->
+        </div> <!-- row -->
+   
+      <button type="submit" class="btn btn-primary btn-block">Add Case</button>
+    </form>
+</div>

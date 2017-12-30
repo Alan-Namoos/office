@@ -1,0 +1,51 @@
+<div class="col-6 offset-3"><!-- CASE DETAILS -->
+  <h4>Edit Case for:  <%= client.name.first %> <%= client.name.last %> - Case Index: <%= caseIndex %></h4>
+  <form action="/update/case/<%= clientCase._id %>/<%= client._id %>/<%= caseIndex %>" method="post" class="bg-light p-3" id="needs-validation">
+    <!-- Case Type -->
+    <div class="form-group">
+      <select class="form-control" id="case_type" name="case_type">
+          <option value="Asylum">Asylum</option>
+          <option value="Deportation">Deportation</option>
+          <option value="Work Authorization">Work Authorization</option>
+          <option value="Family Based - Green Card">Family Based - Green Card</option>
+          <option value="Employment Based - Green Card">Employment Based - Green Card</option>
+          <option value="US Citizenship / Naturaliztion">US Citizenship / Naturalization</option>
+      </select>
+    </div>
+
+    <!-- Case Number -->
+    <div class="form-group">
+        <input type="text" class="form-control" id="case_number" name="case_number" placeholder="Case Number (If Any)" value="<%= clientCase.case_number %>">
+    </div>
+
+    <!-- Case Status -->
+    <div class="form-group">
+        <select class="form-control" id="case_status" name="case_status">
+            <option value="New">New</option>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Denied">Denied</option>
+        </select>
+    </div>
+
+    <!-- Case Priority -->
+    <div class="form-group">
+        <select class="form-control" id="case_priority" name="case_priority">
+            <option value="Low">Low</option>
+            <option value="Normal">Normal</option>
+            <option value="High">High</option>
+        </select>
+    </div>
+
+    <!-- BUTTONS - Cancel - Save -->
+    <div class="row">
+      <div class="col">
+          <a href="/client/<%= client._id %>" class="btn btn-warning btn-block">Cancel</a> 
+      </div>
+      <div class="col">
+          <button type="submit" class="btn btn-success btn-block">Update</button>
+      </div>
+    </div>
+
+  </form>
+</div><!-- END CASE DETAILS -->

@@ -1,0 +1,46 @@
+<div class="card">
+    <h4 class="card-header"><%= client.name.first %> <%= client.name.last %></h4>
+    <div class="card-body">
+    <table class="table">
+        <tr>
+            <th scope="col">A-Number</th>
+            <td><%= client.a_number %></td>
+        </tr>
+        <tr>
+            <th scope="col">Home Addres:</th>
+            <td><%= client.address.home %></td>
+        </tr> 
+        <tr>
+            <th scope="col">Work Addres:</th>
+            <td><%= client.address.work %></td>
+        </tr> 
+        <tr class="d-none">
+            <th scope="col">Birthdate:</th>
+            <td><%= client.birthdate %></td>
+        </tr>
+        <tr>
+            <th scope="col">Phone:</th>
+            <td><%= client.phone %></td>
+        </tr>
+        <tr>
+            <th scope="col">Home Email:</th>
+            <td> <%= client.email.home %></td>
+        </tr>
+        <tr>
+            <th scope="col">Work Email:</th>
+            <td><%= client.email.work %></td>
+        </tr>
+        <tr>
+            <th scope="col">Employment:</th>
+            <td><%= client.employment %></td>
+        </tr>
+        <tr>
+            <th scope="col">Immigration Status:</th>
+            <td><%= client.immigration_status %></td>
+        </tr>
+    </table>
+
+    <a href="/edit/client/<%= client._id %>" class="btn btn-info">Edit Client Info</a>
+    <a href="/add/case/<%= client._id %>" class="btn btn-secondary">Add New Case</a>
+    </div>
+</div>

@@ -1,53 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <% include partials/head %>
-</head>
-<body>
-    <header>
-        <% include partials/navbar %>
-    </header>    
-
-    <div class="container">
+<% include partials/template/head %>
+    <header><% include partials/template/navbar %></header> 
+    
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-6">
-                <div class="card">
-                    <h4 class="card-header"><%= client.name.first %> <%= client.name.last %></h4>
-                    <div class="card-body">
-                        <p class="card-text"><strong>A-Number:</strong>  <%= client.a_number %></p>
-                        <p class="card-text"><strong>Home Addres:</strong>  <%= client.address.home %></p>
-                        <p class="card-text"><strong>Work Addres:</strong>  <%= client.address.work %></p>
-                        <p class="card-text"><strong>Birthdate:</strong>  <%= client.birthdate %></p>
-                        <p class="card-text"><strong>Phone:</strong>  <%= client.phone %></p>
-                        <p class="card-text"><strong>Home Email:</strong>  <%= client.email.home %></p>
-                        <p class="card-text"><strong>Work Email:</strong>  <%= client.email.work %></p>
-                        <p class="card-text"><strong>Employment:</strong>  <%= client.employment %></p>
-                        <p class="card-text"><strong>Immigration Status:</strong>  <%= client.immigration_status %></p>
-
-                        <a href="/edit/client/<%= client._id %>" class="btn btn-info">Edit Client Info</a>
-                    </div>
-                </div>
-
-
-                 
-					
+            <!-- CLIENT DETAILS -->
+            <div class="col-6"> 
+                <% include partials/content/client-details %>
             </div>
+
+            <!-- CASE DETAILS -->
             <div class="col-6">
-                <ul class="list-group bg-dark p-3 mb-3">
-                    <li class="list-group-item 
-                        <% if (client.cases[0].case_status == 'Approved') { %> list-group-item-success <% } %>
-                        <% if (client.cases[0].case_status == 'Pending') { %> list-group-item-warning <% } %>
-                        <% if (client.cases[0].case_status == 'Denied') { %> list-group-item-danger <% } %>                            
-                    "><strong>Status:</strong> <span><%= client.cases[0].case_status %></span> </li>
-                    <li class="list-group-item"> <strong>Case Type:</strong>  <%= client.cases[0].case_type %></li>
-                    <li class="list-group-item"> <strong>Priority:</strong>  <%= client.cases[0].case_priority %></li>
-                    <li class="list-group-item"> <strong>Opened:</strong> <%= client.cases[0].case_date_created %></li> 
-                </ul>
+                <% include partials/content/case-details %>
             </div>
 
         </div>
     </div>   <!-- Main Container -->
 
-    <% include partials/scripts %>
-</body>
-</html>
+<% include partials/template/scripts %>
+<% include partials/template/footer %>

@@ -1,0 +1,30 @@
+<table id="clients-table" class="table table-bordered table-sm table-hover xbg-light">
+        <thead class="thead-light">
+            <tr class="text-center">
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Immig-Status</th>
+                <th scope="col">Case Type</th>
+                <th scope="col">Case Status</th>
+            </tr>
+        </thead>
+        <tbody>   
+            <% clients.forEach(function(client){ %>
+            <tr class="text-center" onclick="window.location='/client/<%= client._id %>';">
+                <td><a href='/client/<%= client._id %>'><%= client.name.first %> <%= client.name.last %></a></td>
+                <td><%= client.phone %></td>
+                <td><%= client.immigration_status %></td>
+                <td><%= client.cases[0].case_type %></td>
+                <td><span class=" 
+                <% if (client.cases[0].case_status == 'New') { %> badge badge-primary <% } %>
+                <% if (client.cases[0].case_status == 'Approved') { %> badge badge-success <% } %>
+                <% if (client.cases[0].case_status == 'Pending') { %> badge badge-warning <% } %>
+                <% if (client.cases[0].case_status == 'Denied') { %> badge badge-danger <% } %>                            
+            "><%= client.cases[0].case_status %></span></td>
+                <!-- <td><a href='/client/<%= client._id %>' class="btn btn-primary btn-sm btn-block">View</a></td>
+                <td><form method="get" action="/edit/client/<%= client._id %>"><button class="btn btn-info btn-sm btn-block" type="submit">Edit</button></form></td> -->
+                <!-- <td><form method="post" action="/delete/client/<%= client._id %>"><button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete</button></form></td> -->
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>

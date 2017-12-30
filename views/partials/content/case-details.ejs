@@ -1,0 +1,17 @@
+<% for(let i = 0; i < client.cases.length; i++) { %>
+<ul class="list-group bg-dark  mb-3">
+    <li class="list-group-item 
+        <% if (client.cases[i].case_status == 'New') { %> list-group-item-primary <% } %>
+        <% if (client.cases[i].case_status == 'Approved') { %> list-group-item-success <% } %>
+        <% if (client.cases[i].case_status == 'Pending') { %> list-group-item-warning <% } %>
+        <% if (client.cases[i].case_status == 'Denied') { %> list-group-item-danger <% } %>                            
+    "><strong>Status:</strong> <span><%= client.cases[i].case_status %></span> </li>
+    <li class="list-group-item"> <strong>Case Type:</strong>  <%= client.cases[i].case_type %></li>
+    <li class="list-group-item"> <strong>Case Number:</strong>  <%= client.cases[i].case_number %></li>
+    <li class="list-group-item"> <strong>Priority:</strong>  <%= client.cases[i].case_priority %></li>
+    <li class="list-group-item"> <strong>Opened:</strong> <%= client.cases[i].case_date_created %></li> 
+    <li class="list-group-item"> <strong>Mongoose ID:</strong> <%= client.cases[i]._id %></li>
+    <li class="list-group-item text-right"><a href="/edit/case/<%= client.cases[i]._id %>/<%= client._id %>/<%= i %>" class="btn btn-info">Edit</a></li> 
+</ul>
+<% } %>
+
