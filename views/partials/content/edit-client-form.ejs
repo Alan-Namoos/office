@@ -2,7 +2,7 @@
     <form action="/update/client/<%= client._id %>" method="post" class="bg-light p-3" id="needs-validation">
         <div class="row">
             <div class="col"> <!-- CLIENT DETAILS -->
-                <h4>Edit Client Info</h4>
+                <h4>Edit Client Info: <strong><%= client.name.first %> <%= client.name.last %></strong></h4>
                 <!-- Name -->
                 <div class="row">
                     <div class="col">

@@ -1,5 +1,5 @@
 <div class="card">
-    <h4 class="card-header"><%= client.name.first %> <%= client.name.last %></h4>
+    <h4 class="card-header bg-primary text-light"><%= client.name.first %> <%= client.name.last %> - <%= client.immigration_status %></h4>
     <div class="card-body">
     <table class="table">
         <tr>
@@ -41,6 +41,6 @@
     </table>
 
     <a href="/edit/client/<%= client._id %>" class="btn btn-info">Edit Client Info</a>
-    <a href="/add/case/<%= client._id %>" class="btn btn-secondary">Add New Case</a>
+    <a href="/add/case/<%= client._id %>" class="btn btn-primary">Add New Case</a>
     </div>
 </div>
