@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 const Client = require('./models/client');
 const PORT = process.env.PORT || 8080;
 const app = express();
-app.locals.siteName = 'Anzarouth Immigration Law   ';
+app.locals.siteName = 'Site Name  ';
 
 // Mongoose Connection to mLab
-mongoose.connect('mongodb://alan-namoos:zxc123asd@ds023098.mlab.com:23098/office', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/dbname', { useMongoClient: true });
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 
